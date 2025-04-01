@@ -12,7 +12,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->foreignUuid('category_id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignUuid('author_id')->constrained('authors')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('author_id')->nullable()->constrained('authors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('is_trending')->default(false);
             $table->timestamps();
         });

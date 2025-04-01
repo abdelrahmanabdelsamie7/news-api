@@ -10,7 +10,8 @@ class SubscriberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=>'required|email|exists:subscribers,email'
+            'email' => 'required|email|unique:subscribers,email'
         ];
     }
+
 }

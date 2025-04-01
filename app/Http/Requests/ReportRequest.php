@@ -14,7 +14,7 @@ class ReportRequest extends FormRequest
             'content' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:4048',
             'category_id' => 'required|exists:categories,id',
-            'author_id' => 'required|exists:authors,id',
+            'author_id' => 'nullable|exists:authors,id',
             'is_trending' => 'boolean',
         ];
     }

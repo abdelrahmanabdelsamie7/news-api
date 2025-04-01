@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
-class ReportImageRequest extends FormRequest
+class ShareIdeaRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -10,9 +10,11 @@ class ReportImageRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'message' => 'required|string',
+            'reply' => 'nullable|string',
             'report_id' => 'required|exists:reports,id',
-            'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
         ];
     }
 }

@@ -49,7 +49,7 @@ class ReportController extends Controller
     }
     public function show(string $id)
     {
-        $report = Report::with(['category:id,title', 'author:id,name,image', 'images'])->findOrFail($id);
+        $report = Report::with(['category:id,title', 'author:id,name,image', 'images' ,'ideas'])->findOrFail($id);
         return $this->sendSuccess('Report Retrieved Successfully!', $report);
     }
     public function update(ReportRequest $request, string $id)

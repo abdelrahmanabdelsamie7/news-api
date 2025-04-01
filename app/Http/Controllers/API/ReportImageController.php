@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\API;
+
 use App\Models\ReportImage;
 use App\traits\ResponseJsonTrait;
 use App\Http\Controllers\Controller;
@@ -8,24 +9,27 @@ use App\Http\Requests\ReportImageRequest;
 
 class ReportImageController extends Controller
 {
-     use ResponseJsonTrait;
+    use ResponseJsonTrait;
     public function __construct()
     {
-        $this->middleware('auth:admins')->only(['store','destroy']);
+        $this->middleware('auth:admins')->only(['store', 'destroy']);
     }
     public function store(ReportImageRequest $request)
     {
         $data = $request->validated();
-        if ($request->hasFile('image')) {
-            $originalName = $request->file('image')->getClientOriginalName();
-            $imageName = time() . '_' . $originalName;
-            $request->file('image')->move(public_path('uploads/reports'), $imageName);
-            $data['image'] = asset('uploads/reports/' . $imageName);
-        } else {
-            $data['image'] = null;
+        $imagePaths = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $originalName = $image->getClientOriginalName();
+                $imageName = time() . '_' . $originalName;
+                $image->move(public_path('uploads/reports'), $imageName);
+                ReportImage::create([
+                    'report_id' => $data['report_id'],
+                    'image' => asset('uploads/reports/' . $imageName),
+                ]);
+            }
         }
-        $reportImage = ReportImage::create($data);
-        return $this->sendSuccess('Report Image Added Successfully', $reportImage, 201);
+        return $this->sendSuccess('Report Images Added Successfully', [], 201);
     }
     public function destroy($id)
     {
