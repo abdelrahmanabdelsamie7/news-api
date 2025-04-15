@@ -12,7 +12,7 @@ class ReportRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:4048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:4048',
             'category_id' => 'required|exists:categories,id',
             'author_id' => 'nullable|exists:authors,id',
             'is_trending' => 'boolean',

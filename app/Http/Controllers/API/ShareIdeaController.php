@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\API;
 use App\Mail\AdminReplyMail;
+use Illuminate\Http\Request;
 use App\traits\ResponseJsonTrait;
 use App\Models\{ShareIdea, Report};
 use App\Http\Controllers\Controller;
@@ -29,7 +30,7 @@ class ShareIdeaController extends Controller
     }
     public function show(string $id)
     {
-        $idea = ShareIdea::with('reports')->findOrFail($id);
+        $idea = ShareIdea::with('report')->findOrFail($id);
         return $this->sendSuccess('Idea Retrieved Successfully!', $idea);
     }
     public function destroy($id)

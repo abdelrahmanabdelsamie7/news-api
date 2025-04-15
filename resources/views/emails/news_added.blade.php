@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <title>📢 خبر جديد</title>
+    <title> خبر جديد 📢</title>
     <style>
         body {
             font-family: "Cairo", sans-serif;
@@ -22,7 +22,7 @@
             max-width: 600px;
             margin: 50px auto;
             padding: 40px;
-            background-color: #d6d4d4;
+            background-color: rgb(255, 255, 255);
             border-radius: 15px;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
             text-align: center;
@@ -64,7 +64,7 @@
 
 <body>
     <div class="container">
-        <h2>📢 خبر جديد!</h2>
+        <h2> خبر جديد </h2>
         <p><strong>{{ $news->title }}</strong></p>
         <p>{{ $news->content }}</p>
         <a href="http://localhost:4200/post/{{ $news->id }}" class="btn">📖 قراءة المزيد</a>

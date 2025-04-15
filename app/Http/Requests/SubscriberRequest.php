@@ -13,5 +13,4 @@ class SubscriberRequest extends FormRequest
             'email' => 'required|email|unique:subscribers,email'
         ];
     }
-
 }

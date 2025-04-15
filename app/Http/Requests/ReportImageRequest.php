@@ -12,7 +12,7 @@ class ReportImageRequest extends FormRequest
         return [
             'report_id' => 'required|exists:reports,id',
             'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:4048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:4048'
         ];
     }
 }
